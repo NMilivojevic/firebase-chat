@@ -1,27 +1,30 @@
-# React + TypeScript + Vite
+# Firebase chat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+-   TypeScript: for static typing
+-   React: framework of choice
+-   Vite: development environment
+-   ScSS: styling
+-   ContextApi: state management
+-   ESLint: linting
+-   Firebase: Auth, data storage, chat integration
 
-Currently, two official plugins are available:
+**Firebase flow**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   Firebase authentication with email and password.
+-   Firebase
 
-## Expanding the ESLint configuration
+**ContextAPI state**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+-   AuthContext: Manages user authentication and provides real-time user data. It includes states for `currentUser` and `isLoading`.
+-   ChatContext: manages chat state and user data. It includes a `chat` state with a `chatId` and `user` information, allowing for user changes through a `reducer`.
 
-- Configure the top-level `parserOptions` property like this:
+**Pages**
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+-   Register: Uses Firebase's `createUserWithEmailAndPassword`. If the registration is successful, it updates the user's display name and adds their information to the Firestore database. However, if there are any errors during registration (e.g., email already in use or weak password), an error message is displayed briefly.
+-   Login: Uses firebase's `signInWithEmailAndPassword` for authentication. If there are any authentication errors (e.g., invalid login credentials), an error message is displayed briefly.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+**Components**
+
+-   Contains reusable UI components.
+-   Chats: listens for changes in the user's chat data in Firebase Firestore and displays a list of chat conversations. When a chat conversation is selected, it updates the chat user's information through the `ChatContext`.
+-   Messages: listens for changes in the chat messages associated with the current chat conversation in Firebase Firestore and displays a list of these messages. It fetches and displays messages dynamically as they are added or updated in the Firestore document.

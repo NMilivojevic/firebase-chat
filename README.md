@@ -3,7 +3,7 @@
 -   TypeScript: for static typing
 -   React: framework of choice
 -   Vite: development environment
--   ScSS: styling
+-   Sass: styling
 -   ContextApi: state management
 -   ESLint: linting
 -   Firebase: Auth, data storage, chat integration

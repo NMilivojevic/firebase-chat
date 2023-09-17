@@ -11,7 +11,6 @@
 **Firebase flow**
 
 -   Firebase authentication with email and password.
--   Firebase
 
 **ContextAPI state**
 

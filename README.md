@@ -2,7 +2,7 @@
 
 -   TypeScript: for static typing
 -   React: framework of choice
--   Vite: development environment
+-   Vite: bundler/development environment
 -   Sass: styling
 -   ContextApi: state management
 -   ESLint: linting
